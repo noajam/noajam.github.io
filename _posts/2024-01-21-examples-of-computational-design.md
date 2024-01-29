@@ -29,7 +29,7 @@ The intricate, often diamond-shaped protrusion pattern of pinecones is what make
   <a href="https://botanicalgarden.berkeley.edu/glad-you-asked/cones">
   <img src="https://botanicalgarden.berkeley.edu/wp-content/uploads/2020/04/Pine-cone-diagram_1.jpg"></a>
 
-  <figcaption style="text-align: center;">A showcase of the aging process of pinecones on a branch. Image courtesy of the <a href="https://botanicalgarden.berkeley.edu/glad-you-asked/cones">University of California Berkeley Botanical Garden.</a></figcaption>
+  <figcaption style="text-align: center;">A showcase of the aging process of pinecones on a branch. Image courtesy of the <a href="https://botanicalgarden.berkeley.edu/glad-you-asked/cones">University of California Berkeley Botanical Garden</a>.</figcaption>
 </figure>
 
 ## Zoological World: Peacocks
@@ -39,7 +39,7 @@ While most birds have interesting feather patterns that can illustrate computati
   <a href="https://www.britannica.com/animal/peacock">
   <img src="https://cdn.britannica.com/16/156416-050-5C80474F/peacock-Indian-tail-feathers.jpg"></a>
 
-  <figcaption style="text-align: center;">Indian peacock. Image courtesy of <a href="https://www.britannica.com/animal/peacock">Mihail Egorov and the Encyclopedia Britannica.</a></figcaption>
+  <figcaption style="text-align: center;">Indian peacock. Image courtesy of <a href="https://www.britannica.com/animal/peacock">Mihail Egorov and the Encyclopedia Britannica</a>.</figcaption>
 </figure>
 
 ## Environment Built by Organisms: Crown Shyness
@@ -49,7 +49,7 @@ Crown shyness is a phenomenon wherein some species of trees have canopies natura
   <a href="https://www.nhm.ac.uk/discover/crown-shyness-are-trees-social-distancing.html">
   <img src="https://www.nhm.ac.uk/content/dam/nhmwww/discover/crown-shyness/malay-camphor-tree-two-column.jpg.thumb.768.768.jpg"></a>
 
-  <figcaption style="text-align: center;">Malay camphor tree displaying crown shyness. Image courtesy of <a href="https://commons.wikimedia.org/wiki/File:FRIM_canopy.JPG">Mike Norton via Wikimedia Commons</a> and the <a href="https://www.nhm.ac.uk/discover/crown-shyness-are-trees-social-distancing.html"> Natural History Museum.</a></figcaption>
+  <figcaption style="text-align: center;">Malay camphor tree displaying crown shyness. Image courtesy of <a href="https://commons.wikimedia.org/wiki/File:FRIM_canopy.JPG">Mike Norton via Wikimedia Commons</a> and the <a href="https://www.nhm.ac.uk/discover/crown-shyness-are-trees-social-distancing.html"> Natural History Museum</a>.</figcaption>
 </figure>
 
 # Computational Design in Human Environments
@@ -86,8 +86,42 @@ With this example, I'm definitely being more general, but I did find a "spaceshi
 
 # Computational Designers
 
-In this section, I will highlight a couple computational designers whose work interests me.
+In this section, I will highlight a couple computational researchers or designers whose work interests me.
 
-## Person 1
+## Anja Kunic
+I find Kunic's work in reconfigurable robotic timber construction quite interesting due to the human-computer interaction component brought in with mixed reality. With computers and AI becoming increasingly ubiquitous, it's inevitable that we will want to see ways for humans to cooperate with robots in various tasks, like construction in this case.
 
-## Person 2
+Below is an example of her work, which involves the repurposing of leftover timber from construction efforts. The various wood blocks are robotically fabricated and assigned individual QR codes that give them a unique material "dataset," allowing tracking of individual pieces from one structure to another throughout reconfiguration. The assembly of the structures are done through human-robot collaboration in mixed reality.
+
+<figure class="align-center">
+  <a href="https://www.create-sdu.com/projects/reconwood02">
+  <img src="https://images.squarespace-cdn.com/content/v1/5cb8a506b2cf7943b7b14c0f/1674143704844-W56ZLYOM157LD8NNBRIF/HRI+MR+nut+embedding+2+SMALL-01.jpg?format=1500w"></a>
+
+  <figcaption style="text-align: center;">Human-robot collaboration in mixed reality. Image courtesy of the <a href="https://www.create-sdu.com/projects/reconwood02">CREATE Group</a>.</figcaption>
+</figure>
+
+<figure class="align-center">
+  <a href="https://www.create-sdu.com/projects/reconwood02">
+  <img src="https://images.squarespace-cdn.com/content/v1/5cb8a506b2cf7943b7b14c0f/1674145824003-UGKJO77VS22BRD8W8V8W/5K6A1221+Edit+less+yellow.jpg?format=1500w"></a>
+
+  <figcaption style="text-align: center;">Reconfigured timber structure. Image courtesy of the <a href="https://www.create-sdu.com/projects/reconwood02">CREATE Group</a>.</figcaption>
+</figure>
+
+You can read her publications <a href="https://www.researchgate.net/profile/Anja-Kunic">here</a> or find more of her work on the CREATE Group's <a href="https://www.create-sdu.com/">website</a>.
+
+
+
+## Jenny Sabin
+Sabin and her team's work is much more on the artistic side of computational fabrication in architecture. Her team's scuplutures are often inspired by biology and fibrous tissues in particular, and since I've always been quite drawn to bio-inspired designs, that was where my interest drew me in.
+
+LightWeb is the name of the particular mural shown below, and it was fabricated entirely with steel. Slight variations in the machining process were used to play with reflections of light off the cut steel. Alogether, the architectural design was inspired by local organic growth systems.
+
+<figure class="align-center">
+  <a href="https://www.jennysabin.com/lightweb">
+  <img src="https://images.squarespace-cdn.com/content/v1/5783b6f903596e5098f3fce8/1512318412380-6V4J7OEBRGQAAG44CX4K/IMG_7974+%282%29+copy.jpg?format=2500w"></a>
+
+  <figcaption style="text-align: center;">LightWeb mural. Image courtesy of the <a href="https://www.jennysabin.com/">Jenny Sabin Studio</a>.</figcaption>
+</figure>
+
+You can find more of her work on her studio's <a href="https://www.jennysabin.com/">website</a>.
+
