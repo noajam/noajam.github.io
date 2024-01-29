@@ -13,20 +13,23 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: MM
-email:
+title: Noah James
+email: nobobjam@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-twitter_username: username
-github_username: username
-minimal_mistakes_skin: default
+  This is the personal and professional website for Noah James.
+  This website gives additional information about Noah James, including
+  contact information. The blog posts on this website are showcases of
+  Noah James' personal and professional work as a software developer, 
+  musician, and endurance athlete.
+github: [metadata]
+repository: "noajam/noajam.github.io"
+github_username: noajam
+minimal_mistakes_skin: neon
 search: true
 
 # Build settings
 markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
@@ -58,34 +61,28 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "First Lastname"
+  name   : "Noah James"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  bio    : "Soon-to-be graduate of CU Boulder with a Masters in Computer Science. Interested in artificial intelligence, computer graphics, and modeling and simulation.\n\nCurrently looking for work!"
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/noah-r-james/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/noajam/"
+    - label: "Email"
+      icon: "fab fa-fw fa-envelope"
+      url: "mailto:nobobjam@gmail.com"
+    
 
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/noajam"
+    - label: "Email"
+      icon: "fab fa-fw fa-email"
 
 defaults:
   # _posts
