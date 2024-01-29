@@ -8,6 +8,22 @@ categories:
 tags:
   - Bio-inspired
   - Human-centered
+
+gallery:
+  - image_path: /assets/images/examples-of-computational-fabrication/Roppongi_nact_exterior1.JPG
+    alt: "Rounded Exterior of NACT"
+    title: "Rounded Exterior of NACT"
+  - image_path: /assets/images/examples-of-computational-fabrication/Roppongi_nact_exterior2.JPG
+    alt: "Geometric Entrance to NACT"
+    title: "Geometric Entrance to NACT"
+  - image_path: /assets/images/examples-of-computational-fabrication/Roppongi_nact_interior1.JPG
+    alt: "Circular Bar Area in NACT"
+    title: "Circular Bar Area in NACT"
+  - image_path: /assets/images/examples-of-computational-fabrication/Roppongi_nact_interior2.JPG
+    alt: "Indoor Conal Structures in NACT"
+    title: "Indoor Conal Structures in NACT"
+
+
 ---
 
 Computational design can be pretty much anything that's aided by computer instructions. However, when we say "computational design," we generally refer to some sort of pattern or algorithm that produces a visual. A great example for this is fractals. Fractals can be generated completely via mathematics and algorithms, creating pleasing visual designs in the process. When looking for examples of computational design, we begin by looking for patterns, because these imply a regularity that can be replicated with computer instructions. In this post, I will go through several examples of computational design in both nature and human creations.
@@ -54,13 +70,15 @@ Crown shyness is a phenomenon wherein some species of trees have canopies natura
 
 # Computational Design in Human Environments
 
-## Architecture: Roppongi National Museum of Modern Art
+## Architecture: Tokyo National Art Center
 
 While I was studying abroad in Japan, I had the pleasure to visit the Roppongi district in Tokyo. The district was sort of a modern art hub within the city, and it featured many interesting architectural designs, many of which appeared to have been done computationally. The video from the <a href="https://www.nact.jp/english/introduce/about.html">Tokyo National Art Center</a> below shows one such case, with the building itself appearing to be a parameteric surface comprised of glass. Other geometries such as cones and circles are built into the structure, no doubt designed and fabricated completely with the help of mathematical computations.
 
 {% include video id="eHl6Vj7AprY" provider="youtube" %}
 
 Below you can see some of the pictures I took of the building.
+
+{% include gallery layout="half" %}
 
 ## Textiles: Glitch Textiles by Phillip David Stearns
 
