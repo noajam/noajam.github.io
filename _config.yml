@@ -62,7 +62,7 @@ plugins:
 
 author:
   name   : "Noah James"
-  avatar : "/assets/images/bio-photo.jpg"
+  avatar : "/assets/images/headshot_old.jpg"
   bio    : "Soon-to-be graduate of CU Boulder with a Masters in Computer Science. Interested in artificial intelligence, computer graphics, and modeling and simulation.\n\nCurrently looking for work!"
   links:
     - label: "LinkedIn"
@@ -72,7 +72,7 @@ author:
       icon: "fab fa-fw fa-github"
       url: "https://github.com/noajam/"
     - label: "Email"
-      icon: "fab fa-fw fa-envelope"
+      icon: "fas fa-fw fa-envelope"
       url: "mailto:nobobjam@gmail.com"
     
 
