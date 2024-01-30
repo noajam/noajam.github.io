@@ -30,7 +30,7 @@ Computational design can be pretty much anything that's aided by computer instru
 
 # Computational Design in Nature
 ## Botanical World: Pinecones
-Pinecones are an example of a consistent pattern that can be found in nature. They are formed by conifers, trees that prroduce cone structures surrounding the seeds. The common pinecone is an example of this with an overall ellipsoid or egg shape that eventually spreads open upon maturation during the warmer seasons. The opened form of the pinecone allows the protected seeds to be released and germinate.
+Pinecones are an example of a consistent pattern that can be found in nature. They are formed by conifers, trees that produce cone structures surrounding the seeds. The common pinecone is an example of this with an overall ellipsoid or egg shape that eventually spreads open upon maturation during the warmer seasons. The opened form of the pinecone allows the protected seeds to be released and germinate.
 <figure class="align-center">
   <a href="https://botanicalgarden.berkeley.edu/glad-you-asked/cones">
   <img src="https://botanicalgarden.berkeley.edu/wp-content/uploads/2020/04/Cone-variety.jpeg"></a>
@@ -130,9 +130,9 @@ You can read her publications <a href="https://www.researchgate.net/profile/Anja
 
 
 ## Jenny Sabin
-Sabin and her team's work is much more on the artistic side of computational fabrication in architecture. Her team's scuplutures are often inspired by biology and fibrous tissues in particular, and since I've always been quite drawn to bio-inspired designs, that was where my interest drew me in.
+Sabin and her team's work is much more on the artistic side of computational fabrication in architecture. Her team's sculptures are often inspired by biology and fibrous tissues in particular, and since I've always been quite drawn to bio-inspired designs, that was where my interest drew me in.
 
-LightWeb is the name of the particular mural shown below, and it was fabricated entirely with steel. Slight variations in the machining process were used to play with reflections of light off the cut steel. Alogether, the architectural design was inspired by local organic growth systems.
+LightWeb is the name of the particular mural shown below, and it was fabricated entirely with steel. Slight variations in the machining process were used to play with reflections of light off the cut steel. Altogether, the architectural design was inspired by local organic growth systems.
 
 <figure class="align-center">
   <a href="https://www.jennysabin.com/lightweb">
