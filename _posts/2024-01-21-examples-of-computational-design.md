@@ -49,7 +49,7 @@ The intricate, often diamond-shaped protrusion pattern of pinecones is what make
 </figure>
 
 ## Zoological World: Peacocks
-While most birds have interesting feather patterns that can illustrate computational-esque design in nature, none are as flashy as the peacock. The peackock's tail pattern features metallic green feathers that are tipped with an vibrant eyespot. During courtship displays or for intimidating predators, the peacock will fan out its feathers as shown in the below image. The repeated pattern of feathers and eyespots appears is very reminiscent of computational design. Additionally, if you look closely, you can see a multitude of short, layered, yellow-green feathers just on the peacock's back. These newer feathers show a shift from small to large as you go from the body to the outside of its tail.
+While most birds have interesting feather patterns that can illustrate computational-esque design in nature, none are as flashy as the peacock. The peacock's tail pattern features metallic green feathers that are tipped with a vibrant eye spot. During courtship displays or for intimidating predators, the peacock will fan out its feathers as shown in the below image. The repeated pattern of feathers and eye spots appears is very reminiscent of computational design. Additionally, if you look closely, you can see a multitude of short, layered, yellow-green feathers just on the peacock's back. These newer feathers show a shift from small to large as you go from the body to the outside of its tail.
 
 <figure class="align-center">
   <a href="https://www.britannica.com/animal/peacock">
@@ -59,7 +59,7 @@ While most birds have interesting feather patterns that can illustrate computati
 </figure>
 
 ## Environment Built by Organisms: Crown Shyness
-Crown shyness is a phenomenon wherein some species of trees have canopies naturally shy away from each other, leaving gaps when looking from below. This is believed to be caused by abrasion of the tree limbs during storms and windy weather, resulting in the characterisic gaps, but there is also evidence that for some species crown shyness can emerge the same regardless of weather patterns. One hypothesis is that sunlight plays a factor, but scientists have proposed other possibilities such as symbiosis with other plant species on the forest floor.
+Crown shyness is a phenomenon wherein some species of trees have canopies naturally shy away from each other, leaving gaps when looking from below. This is believed to be caused by abrasion of the tree limbs during storms and windy weather, resulting in the characteristic gaps, but there is also evidence that for some species crown shyness can emerge the same regardless of weather patterns. One hypothesis is that sunlight plays a role, but scientists have proposed other possibilities such as symbiosis with other plant species on the forest floor.
 
 <figure class="align-center">
   <a href="https://www.nhm.ac.uk/discover/crown-shyness-are-trees-social-distancing.html">
@@ -72,7 +72,7 @@ Crown shyness is a phenomenon wherein some species of trees have canopies natura
 
 ## Architecture: Tokyo National Art Center
 
-While I was studying abroad in Japan, I had the pleasure to visit the Roppongi district in Tokyo. The district was sort of a modern art hub within the city, and it featured many interesting architectural designs, many of which appeared to have been done computationally. The video from the <a href="https://www.nact.jp/english/introduce/about.html">Tokyo National Art Center</a> below shows one such case, with the building itself appearing to be a parameteric surface comprised of glass. Other geometries such as cones and circles are built into the structure, no doubt designed and fabricated completely with the help of mathematical computations.
+While I was studying abroad in Japan, I had the pleasure to visit the Roppongi district in Tokyo. The district was sort of a modern art hub within the city, and it featured many interesting architectural designs, many of which appeared to have been done computationally. The video from the <a href="https://www.nact.jp/english/introduce/about.html">Tokyo National Art Center</a> below shows one such case, with the building itself appearing to be a parametric surface comprised of glass. Other geometries such as cones and circles are built into the structure, no doubt designed and fabricated completely with the help of mathematical computations.
 
 {% include video id="eHl6Vj7AprY" provider="youtube" %}
 
@@ -93,7 +93,7 @@ Below you can see some of the pictures I took of the building.
 
 ## Engineering: Airplanes, Jets, and Rockets
 
-With this example, I'm definitely being more general, but I did find a "spaceship" to show for reference. Although initial conceptions of airplanes in the 20th century were designed through a mix of theory and empirical studies, modern aerospace engineering has definitely reached a point where extensive computation can be valuable. Modern aircraft designs are likely passed through fluid dynamic simulations to determine optimal structures for increasing lift and thrust. Spaceflight is even a step above, and some rather eccentric designs such as the SpaceShip III from Virgin Galactic have emerged as a result, and I believe that these were vetted against a large number of computer simulations beforehand, resulting in the computational design you see now.
+With this example, I'm definitely being more general, but I did find a "spaceship" to show for reference. Although initial conceptions of airplanes in the 20th century were designed through a mix of theory and empirical studies, modern aerospace engineering has definitely reached a point where extensive computation can be valuable. Modern aircraft designs are likely passed through fluid dynamic simulations to determine optimal structures for increasing lift and thrust. Spaceflight is even a step above, and some rather eccentric designs such as the SpaceShip III from Virgin Galactic have emerged as a result, and I believe that these were vetted against many computer simulations beforehand, resulting in the computational design you see now.
 
 <figure class="align-center">
   <a href="https://www.astronomy.com/space-exploration/virgin-galactics-spaceship-iii-a-more-durable-spaceplane/">
