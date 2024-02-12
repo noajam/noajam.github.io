@@ -44,7 +44,8 @@ This design was the result of much trial and error. I did a lot of experimenting
 ### Processing Output
 <img src="/assets/images/laser-cutting-computationally-generated-forms/cubes.svg" style="background-color:white; border-radius:50px;">
 
-### Laser-Cutting Result
+### Laser-Engraving Result
+<img src="/assets/images/laser-cutting-computationally-generated-forms/Skyscrapers.jpg" style="border-radius:50px;">
 
 ### Code
 <script src="https://gist.github.com/noajam/74e246dfa67426edd63ffec434ad8603.js"></script>
@@ -62,6 +63,7 @@ The framing of this design is based on the artwork by <a href="https://www.faceb
 <img src="/assets/images/laser-cutting-computationally-generated-forms/sweet.png" style="background-color:white; border-radius:50px;">
 
 ### Laser-Cutting Result
+<img src="/assets/images/laser-cutting-computationally-generated-forms/CrescentCut.jpg" style="border-radius:50px;">
 
 ### Code
 <script src="https://gist.github.com/noajam/a0fd344ec833ceca13c31e224e8f306c.js"></script>
