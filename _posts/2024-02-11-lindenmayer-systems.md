@@ -25,11 +25,24 @@ tags:
 	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
 </script>
 
-Directly following from the <a href="https://noajam.github.io/computational%20fabrication/laser-cutting-computationally-generated-forms/">previous assignment</a> in my Computational Fabrication course, this post will outline my designs that were created using Lindenmayer Systems (L-Systems). The 
+Directly following from the <a href="https://noajam.github.io/computational%20fabrication/laser-cutting-computationally-generated-forms/">previous assignment</a> in my Computational Fabrication course, this post will outline my designs that were created using Lindenmayer Systems (L-systems). 
 
-*Explain Lindenmayer Systems.
+A simple way to describe L-systems would be that they are a string of characters that change over time according to a set of rules. The initial string is called the "axiom," and it also represents the initial iteration ($$ n = 0 $$). Every following iteration steps through each character in the previous iteration's string, applying that character's rule if it exists, and ignoring the character otherwise. These ignored characters are known as "constants" since they do not change over iterations. Here's a trivial example with only one rule:
 
-*Explain what I focused on.
+Rule:
+- 'F' -> "F+F"
+
+Axiom:
+- "F-F"
+
+| Iteration | String |
+|-----------|-------------|
+| n = 0 | F-F |
+| n = 1 | F+F-F+F |
+| n = 2 | F+F+F+F-F+F+F+F |
+
+
+At any iteration, we can choose to stop and use the string for other purposes. For computational design, we can assign each character in the vocabulary a certain action that the "turtle" can take. Generally, a "turtle" can be used to draw things programmatically in a computer window. We'll go over more of the details in the following sections.
 
 # Materials
 
@@ -77,35 +90,137 @@ The first output uses only 20 sides, and the second uses 360. Observe how the se
 ### Code
 <script src="https://gist.github.com/noajam/2a96ab0d9e125306b1222291152623da.js"></script>
 
-# Computational Designs and Results
-## Branching
+# L-System Code
+Now we'll dive into the important aspects of the L-system implementation. The starter code was provided for the assignment, and this section simply covers the implementation of the remaining features in the `LSystem` class and the main Processing `draw()` function. 
 
-### Processing Output
-<img src="/assets/images/laser-cutting-computationally-generated-forms/sphere.svg" style="background-color:white; border-radius:50px;">
+1. `iterate()`: Handles replacing the current iteration string of the L-system with the new iteration. <script src="https://gist.github.com/noajam/934c6703cb005c8d334a066b6ce82a97.js"></script>
+
+2. `drawLSystem(Turtle t)`: Takes the Turtle object and draws the current iteration string using mapped vocabulary. <script src="https://gist.github.com/noajam/554cb3142cb95f76e7b2d611555c4f30.js"></script>
+
+3. `draw()`: Set to run only once with `noLoop()`. Calls the initialized `LSystem` object's `iterate()` function for as many times as the user has set the value of `numIterations`. <script src="https://gist.github.com/noajam/78f6608d6028f8d31f4f435790cd6d1d.js"></script>
+
+# L-System Results
+## Open System
+
+### Iteration Strings
+
+
+| Iteration | String |
+|-----------|-------------|
+| n = 0     | F-F-F-F-F-F  |
+| n = 1     | [F---F+-]F++F-+F---F-[F---F+-]F++F-+F---F-[F---F+-]F++F-+F---F-[F---F+-]F++F-+F---F-[F---F+-]F++F-+F---F-[F---F+-]F++F-+F---F  |
+| n = 2     | [[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F |
+| n = 3     | [[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F---[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F++[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-+[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F---[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-[[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F---[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F++[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-+[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F---[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-[[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F---[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F++[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-+[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F---[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-[[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F---[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F++[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-+[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F---[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-[[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F---[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F++[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-+[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F---[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-[[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F---[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F++[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F-+[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F---[[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F+-][F---F+-]F++F-+F---F++[F---F+-]F++F-+F---F-+[F---F+-]F++F-+F---F---[F---F+-]F++F-+F---F |
+
+
+
+### Iteration Outputs
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/ope0.svg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">n = 0</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/ope1.svg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">n = 1</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/ope2.svg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">n = 2</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/ope3.svg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">n = 3</figcaption>
+</figure>
 
 ### Code
-<script src="https://gist.github.com/noajam/219db508a67b48b794c3f0b8f71b523a.js"></script>
+<script src="https://gist.github.com/noajam/f871ccfcc7d20e7c88bd09aeaa8b1d45.js"></script>
 
 ## Eye
 
-### Processing Output
-<img src="/assets/images/laser-cutting-computationally-generated-forms/cubes.svg" style="background-color:white; border-radius:50px;">
+### Iteration Strings
 
-### Laser-Engraving Result
-<img src="/assets/images/laser-cutting-computationally-generated-forms/Skyscrapers.jpg" style="border-radius:50px;">
+| Iteration | String    |
+| --------- | --------- |
+| n = 0     | F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F |
+| n = 1     | F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F-F--F+F+F--F |
+| n = 2     | F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F |
+| n = 3     | F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F-F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F--F--F+F+F--F--F--F+F+F--F+F--F+F+F--F+F--F+F+F--F--F--F+F+F--F |
+
+
+### Iteration Outputs
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/eye0.svg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">n = 0</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/eye1.svg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">n = 1</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/eye2.svg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">n = 2</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/eye3.svg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">n = 3</figcaption>
+</figure>
 
 ### Code
-<script src="https://gist.github.com/noajam/74e246dfa67426edd63ffec434ad8603.js"></script>
+<script src="https://gist.github.com/noajam/2129af63c0442914c31274d61a97df5d.js"></script>
+
+### Laser-Engraving Result
 
 ## Isometric
 
-### Processing Output
-<img src="/assets/images/laser-cutting-computationally-generated-forms/sweet.png" style="background-color:white; border-radius:50px;">
+### Iteration Strings
 
-### Laser-Cutting Result
-<img src="/assets/images/laser-cutting-computationally-generated-forms/CrescentCut.jpg" style="border-radius:50px;">
+
+| Iteration | String |
+|-----------|-------------|
+| n = 0     | F-XF-F-XF-F-XF  |
+| n = 1     | F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]XF-F-F-F++  |
+| n = 2     | F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++ |
+| n = 3     | F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++]X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-[F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-]F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++]X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++]X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-[F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-]F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++]X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++]X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-[F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-]F-F-F-F++F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++]X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-[F-X[FXF]X-[-X-]-X[FXF]XF-]F-X[FXF]X-[-X-]-X[FXF]X[F-F-F-F++X[FXF]X-[-X-]-X[FXF]XF-F-F-F++]X[FXF]X-[-X-]-X[FXF]XF-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++F-F-F-F-F++++++ |
+
+
+
+### Iteration Outputs
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/iso0.svg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">n = 0</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/iso1.svg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">n = 1</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/iso2.svg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">n = 2</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/iso3.svg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">n = 3</figcaption>
+</figure>
 
 ### Code
-<script src="https://gist.github.com/noajam/a0fd344ec833ceca13c31e224e8f306c.js"></script>
+<script src="https://gist.github.com/noajam/63d9cf1dc980a1674611b4cfc09f1798.js"></script>
+
+### Laser-Engraving Result
+
 
 # Conclusion (and Problems Faced)
+While I used L-systems in this project to produce mostly syymetrical, geometric designs, L-systems were originally concieved to explain the evolving structures of plants and trees. There are many ways to build rules and axioms that can generate organic structures like branches and leaves. I myself played a lot with some example L-systems that formed tree branches, but I could not find a result that was appealing enough to present here or engrave. Something that would be interesting to explore in the future would be the relation of L-systems to formal languages. It's been a while since I've touched formal languages, but I imagine there are some interesting applications one could find in the intersection of the two.
+
+I would like to make note of an issue I found with the laser cutting process. My isometric design ended up translating to Rhino in a slightly messed up fashion. Without significant experience in Rhino, I simply attempted the regular "Join" and "Group" operations, but there were still numerous layers of overlapping lines. My first attempt at etching despite the overlapping lines reuslted in some of the more heavily drawn sections being completely cut out of the wood. I then tried vastly increasing the speed and lowering the power so that multiple passes would not cut all the way through the thin slab.
