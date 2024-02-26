@@ -177,6 +177,10 @@ Now we'll dive into the important aspects of the L-system implementation. The st
 <script src="https://gist.github.com/noajam/2129af63c0442914c31274d61a97df5d.js"></script>
 
 ### Laser-Engraving Result
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/eyecut.jpeg" style="background-color:white; border-radius:50px;">
+  <!-- <figcaption style="text-align: center;">n = 3</figcaption> -->
+</figure>
 
 ## Isometric
 
@@ -218,6 +222,11 @@ Now we'll dive into the important aspects of the L-system implementation. The st
 <script src="https://gist.github.com/noajam/63d9cf1dc980a1674611b4cfc09f1798.js"></script>
 
 ### Laser-Engraving Result
+
+<figure class="align-center">
+  <img src="/assets/images/lindenmayer-systems/isocut.jpeg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">This is actually n = 4 for the isometric L-system.</figcaption>
+</figure>
 
 
 # Conclusion (and Problems Faced)
