@@ -32,7 +32,7 @@ Conceptually, transforming 3-dimensional forms into a set of 2-dimensional curve
 6 millimeter acrylic sheets provided by the <a href="https://www.colorado.edu/atlas/research-creative/BTULab">BTU Lab</a> were used for the laser cutting. The amount of acrylic needed was dependent on the width and height of the parametric design.
 
 # Designing Parametric Vases
-A vase is a simple object that consists of an exterior and a hollow interior with a single opening at the top. I wanted to generate a variety of vase designs with ease, so I planned for a series of polygons to be placed at different heights and connected along the z-axis, with each polygon's individual parameters being alterable. The `Loft` function in Rhino and Grasshopper is used to connect the polygon curves to each other.
+A vase is a simple object that consists of an exterior and a hollow interior with a single opening at the top. I wanted to generate a variety of vase designs with ease, so I planned for a series of polygons to be placed at different heights and connected along the z-axis, with each polygon's individual parameters being alterable. The **Loft** function in Rhino and Grasshopper is used to connect the polygon curves to each other.
 
 Here are all the tunable parameters for the vase object
 1. Number of polygons (3 - 10)
@@ -80,11 +80,43 @@ Following this, we can use a boolean difference to leave a vase-like structure, 
 
 # Slicer
 
-*Put info about Grasshopper script here*
+To slice the model into sections that can be cut, we first construct a series of parallel planes up through it. These planes are separated by a distance determined by the material thickness in millimeters. 
 
-*Include screenshots of script + sentence explanations*
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/CreatingSlices.png" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Series of XY planes separated by material thickness.</figcaption>
+</figure>
 
-*Include second python script*
+The result is passed into the previously shown intersection component to generate the slices for the object. Then, this data is passed forward into a series of functions that move the resulting curves onto the XY plane and spread them out in preparation for cutting. Another Python script is used here to parse the data tree of curves and generate lists of displacements for each one. There is probably an easier way to do this, but since I had a hollow cutout curve in addition to the main form curve, it wasn't that simple to figure out. Some slices (namely the first one at the base), only had one curve, and others had two, which meant that the curves had to be carefully displaced so that they stayed with their associated curve. The script also helps compute the distances between slices on the XY plane based on the bounding box widths of each of the curve groups. This keeps the slices as close to each other as possible without overlapping. A basic print statement during the loop also outputs the index text into the following section, which is used for numbering the slices.
+
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/PreparingSlices.png" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Preparing slice curves for cutting on the XY plane.</figcaption>
+</figure>
+
+<script src="https://gist.github.com/noajam/4566c6f91c35dff2185c139e92cfd689.js"></script>
+
+Finally, text numbering is added onto each of the slices to aid in assembly afterwards. This text can be displaced in the x and y directions to make sure it fits on every slice without falling in the hollow section of the vase slice.
+
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/Numbering.png" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Numbering slices with the <b>Text on Surface</b> component.</figcaption>
+</figure>
+
+I put together one other group of components to help with scaling the object and viewing how the 3D form might look after assembly. A simple extrusion of the slices allows us to see the discretized version of the object that we will end up gluing together after cutting. The extrusions extend for a distance equal to the material thickness.
+
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/ScalingAndView.png" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Scaling and viewing extrusion preview.</figcaption>
+</figure>
+
+
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/ExtrudeExample.png" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Example of fabrication preview.</figcaption>
+</figure>
+
+The full Grasshopper script can be downloaded <a href="/assets/downloadables/ParametricDesignSlicer.gh" download>here</a>.
 
 # Fabrication Results
 
