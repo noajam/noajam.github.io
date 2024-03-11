@@ -119,10 +119,55 @@ I put together one other group of components to help with scaling the object and
 The full Grasshopper script can be downloaded <a href="/assets/downloadables/ParametricDesignSlicer.gh" download>here</a>.
 
 # Fabrication Results
+## Design 1
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/Object1RevisedRender.png" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Design 1 Render.</figcaption>
+</figure>
 
-*Show results*
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/Object1RevisedSliced.png" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Design 1 Sliced.</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/Object1RevisedPrepared.png" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Design 1 Prepared for Cutting.</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/Object1Fabricated.jpg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Design 1 Fabricated.</figcaption>
+</figure>
+
+## Design 2
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/Object2RevisedRender.png" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Design 2 Render.</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/Object2RevisedSliced.png" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Design 2 Sliced.</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/Object2RevisedPrepared.png" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Design 2 Prepared for Cutting.</figcaption>
+</figure>
+
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/Object2Fabricated.jpg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;">Design 2 Fabricated.</figcaption>
+</figure>
+
 
 # Conclusion (and Problems Faced)
+
+<figure class="align-center">
+  <img src="/assets/images/3d-parametric-design-and-slicing-for-laser-cutting/CuttingProcess.jpg" style="background-color:white; border-radius:50px;">
+  <figcaption style="text-align: center;"></figcaption>
+</figure>
 
 One issue with this fabrication process was the size of the cuts. If I went too small, then the numbering on the slices would be illegible, but I wanted to conserve material as much as possible. I ended up going with slice dimensions maxing out around 40 millimeters. This allowed enough space to place numbers that were slightly larger than 4 millimeters, which was about the limit of precision for the laser cutter.
 
