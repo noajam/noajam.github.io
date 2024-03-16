@@ -1,6 +1,6 @@
 ---
 title: '3D Printing Parametric Furniture Designs'
-date: 2024-03-17
+date: 2024-03-16
 toc: true
 toc_sticky: true
 categories:
