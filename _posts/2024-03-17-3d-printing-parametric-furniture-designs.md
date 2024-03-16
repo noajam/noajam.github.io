@@ -42,7 +42,7 @@ The furniture I decided to implement parametrically was a table. Its base would 
   <figcaption style="text-align: center;">Grasshopper table base components.</figcaption>
 </figure>
 <figure class="align-center">
-  <img src="/assets/images/3d-printing-parametric-furniture-design/loftedgeobase_gh.png.png" style="background-color:white; border-radius:50px;">
+  <img src="/assets/images/3d-printing-parametric-furniture-design/loftedgeobase_gh.png" style="background-color:white; border-radius:50px;">
   <figcaption style="text-align: center;">Grasshopper lofted geometry components.</figcaption>
 </figure>
 
