@@ -62,4 +62,12 @@ This script's accuracy was verified by checking its output in the <a href="https
   <img src="/assets/images/a-basic-slicer-for-3d-printing/L3zupfe.png" style="background-color:white; border-radius:50px;">
 </figure>
 
+The g-code output also passed the course validator tool, as seen below.
+
+<figure class="align-center">
+  <img src="/assets/images/a-basic-slicer-for-3d-printing/L3gcodepass.png" style="background-color:white; border-radius:50px;">
+</figure>
+
+Download the full g-code file <a href="/assets/downloadables/output.gcode" download>here</a>.
+
 # Print Results (Coming Soon)
