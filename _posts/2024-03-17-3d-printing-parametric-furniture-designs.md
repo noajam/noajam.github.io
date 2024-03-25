@@ -6,8 +6,7 @@ toc_sticky: true
 categories:
   - Computational Fabrication
 tags:
-  - Laser Cutting
-  - Laser Engraving
+  - 3D Printing
   - Rhino
   - Grasshopper
   - Parametric Design
