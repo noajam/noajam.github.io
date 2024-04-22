@@ -37,10 +37,16 @@ Below are some examples of the output sphere in its current state. I applied a j
   <img src="/assets/images/comp-fab-final/output.gif" style="background-color:white; border-radius:50px;">
 </figure>
 
-In a Python 3 script, I loaded the audio from a waveform file and processed it with the real-valued Fast Fourier Transform function from `scipy`. This data was then outputted into the Grasshopper script to be 
+In a Python 3 script, I loaded the audio from a waveform file and processed it with the real-valued Fast Fourier Transform function from `scipy`. This data was then outputted into the Grasshopper script to be combined with the vertices that make up a primitive sphere mesh.
 
 <figure class="align-center">
   <img src="/assets/images/comp-fab-final/FinalMidwayGrasshopper1.png" style="background-color:white; border-radius:50px;">
+</figure>
+
+Currently, while some interesting outputs can be found by adjusting parameters, few of them are printable due to the lack of continuity caused by the frequency peaks and jitter. As I move towards finishing this project I will focus on adjusting the audio data to better form a continuous terrain over the surface of the sphere.
+
+<figure class="align-center">
+  <img src="/assets/images/comp-fab-final/FinalMidwayDifferentExample.png" style="background-color:white; border-radius:50px;">
 </figure>
 
 # Print Results
