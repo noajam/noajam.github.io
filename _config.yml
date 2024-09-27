@@ -20,7 +20,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   This website gives additional information about Noah James, including
   contact information. The blog posts on this website are showcases of
   Noah James' personal and professional work as a software developer, 
-  musician, and endurance athlete.
+  musician, and endurance athlete. Noah James is primarily interested 
+  in graphics programming.
 github: [metadata]
 repository: "noajam/noajam.github.io"
 github_username: noajam
@@ -63,7 +64,7 @@ plugins:
 author:
   name   : "Noah James"
   avatar : "/assets/images/headshot_old.jpg"
-  bio    : "Graduate of CU Boulder with a Masters in Computer Science. Interested in <strong>computer graphics</strong>, <strong>artificial intelligence</strong>, and <strong>software engineering</strong>.\n\nCurrently looking for work!"
+  bio    : "Master of Science in Computer Science from the University of Colorado Boulder. Interested in <strong>graphics programming</strong>, <strong>machine learning</strong>, and <strong>software engineering</strong>.\n\nCurrently looking for work!"
   links:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
