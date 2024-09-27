@@ -1,0 +1,38 @@
+---
+layout: archive
+---
+
+<link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+
+<div class="threejs">
+    <iframe id="window" src="../assets/pages/guiapp.html"></iframe>
+</div>
+
+{{ content }}
+
+<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts |
+    default: "Recent Posts" }}</h3>
+
+{% if paginator %}
+{% assign posts = paginator.posts %}
+{% else %}
+{% assign posts = site.posts %}
+{% endif %}
+
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+<div class="entries-{{ entries_layout }}">
+    {% for post in posts %}
+    {% include archive-single.html type=entries_layout %}
+    {% endfor %}
+</div>
+
+{% include paginator.html %}
+
+<script>
+    // Insert the GUI container before the initial content
+    var container = document.getElementById('window');
+    var divOfContainer = container.parentElement;
+    var initcontentP = document.body;
+    var initcontent = document.getElementsByClassName("initial-content")[0];
+    initcontentP.insertBefore(divOfContainer, initcontent);
+</script>

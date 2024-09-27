@@ -29,7 +29,7 @@ search: true
 
 # Build settings
 markdown: kramdown
-remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
@@ -63,7 +63,7 @@ plugins:
 author:
   name   : "Noah James"
   avatar : "/assets/images/headshot_old.jpg"
-  bio    : "Soon-to-be graduate of CU Boulder with a Masters in Computer Science. Interested in artificial intelligence, computer graphics, and modeling and simulation.\n\nCurrently looking for work!"
+  bio    : "Graduate of CU Boulder with a Masters in Computer Science. Interested in <strong>computer graphics</strong>, <strong>artificial intelligence</strong>, and <strong>software engineering</strong>.\n\nCurrently looking for work!"
   links:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
